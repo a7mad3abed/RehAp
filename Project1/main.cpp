@@ -117,11 +117,14 @@ int main (){
 
 	Book Quran("Quran");
 	PageSequence ps("Juz1");
-	Page page(2, 0, Difficulty::EASY);
-	ps.addPageToSquence(page);
+
+	for (int i = 0; i < 20; i++) {
+		Page page(i + 2, 0, Difficulty::EASY);
+		ps.addPageToSquence(page);
+	}
 
 	Quran.newPageSquence(ps);
 	
-	Quran.getPageSequences()[0].getPageByNumber(0).displayPage();
+	Quran.getPageSequences()[0].getPageByNumber(5).displayPage();
 	
 }
