@@ -19,6 +19,10 @@ public:
 		return mPageNumber;
 	}
 
+	void displayPage() {
+		std::cout << "Page Number: " << mPageNumber << ", last rehearsed: " << mHowOld << " ago!";
+	}
+
 private:
 	int mPageNumber = 0;
 	int mHowOld = 0;
@@ -43,7 +47,7 @@ public:
 	}
 
 	Page getPageByNumber(int n) {
-		if (n < 0 || n >= mPageSequence.size()) {
+		if (n < 0 || n > mPageSequence.size()) {
 			std::cout << "invalid page number";
 		}
 
@@ -78,9 +82,14 @@ public:
 		}
 	}
 
-	void newBookSquence()
+	void newPageSquence(PageSequence ps)
 	{
+		bookSequences.push_back(ps);
 		
+	}
+
+	std::vector<PageSequence> getPageSequences() {
+		return bookSequences;
 	}
 
 private:
@@ -95,11 +104,24 @@ public:
 
 	}
 
+	void addBook(Book book) {
+		books.push_back(book);
+	}
+
 private:
+	std::vector<Book> books;
 
 };
 
 int main (){
-	std::cout << "Hello again";
 
+	Book Quran("Quran");
+	PageSequence ps("Juz1");
+	Page page(2, 0, Difficulty::EASY);
+	ps.addPageToSquence(page);
+
+	Quran.newPageSquence(ps);
+	
+	Quran.getPageSequences()[0].getPageByNumber(0).displayPage();
+	
 }
