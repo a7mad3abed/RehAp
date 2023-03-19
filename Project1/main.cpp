@@ -113,6 +113,24 @@ private:
 
 };
 
+class Trainer{
+public:
+	int getNumberOfPagesDaily(){
+		return numberOfPagesDaily;
+	}
+
+	void setNumberOfPagesDaily(int nopd){
+		numberOfPagesDaily = nopd;
+	}
+
+
+private:
+	int numberOfPagesDaily;
+	PageSequence ps;
+
+
+};
+
 int main (){
 
 	Book Quran("Quran");
